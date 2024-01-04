@@ -173,6 +173,8 @@ const ActivityFeed = ({
             <div key={date}>
               <h3 className="activity-feed-date">
                 {extractedDateForSubheading(date)}
+                {"||||"}
+                {date}
               </h3>
               <ul>
                 {groupedActivities[date].map((activity) => (
@@ -202,6 +204,10 @@ const ActivityFeed = ({
                           <div className="list-box-content">
                             <div className="list-box-main-number">
                               {activity.from}
+                              {"||||"}
+                              {activity.created_at}
+                              {/* <div>{activity.from}</div>
+                              <div>{activity.created_at}</div> */}
                             </div>
                             <div className="list-box-information-about-caller">
                               {extractSubtext(
