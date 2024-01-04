@@ -9,6 +9,7 @@ const ArchivedCalls = ({
   loadActivityDetails,
   switchView,
   setSelectedActivity,
+  isItDDMMYYYY,
 }) => {
   // Filter archived activities with necessary conditions
   const nonArchivedActivities = archivedActivities.filter(
@@ -80,11 +81,13 @@ const ArchivedCalls = ({
       "Nov",
       "Dec",
     ];
-    return (
-      addSuffix(parseInt(date.substr(3, 2)) + 1) +
-      " " +
-      month[parseInt(date.substr(0, 2))]
-    );
+    return isItDDMMYYYY
+      ? addSuffix(parseInt(date.substr(0, 2))) +
+          " " +
+          month[parseInt(date.substr(3, 2))]
+      : addSuffix(parseInt(date.substr(3, 2)) + 1) +
+          " " +
+          month[parseInt(date.substr(0, 2))];
   };
 
   // Rendering the main ArchivedCalls component
