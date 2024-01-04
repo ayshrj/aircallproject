@@ -6,7 +6,6 @@ import { faVoicemail } from "@fortawesome/free-solid-svg-icons";
 import { faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
 import { faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
-import moment from "moment";
 
 // Function to format date for subheading
 const extractedDateForSubheading = (date) => {
