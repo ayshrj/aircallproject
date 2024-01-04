@@ -10,10 +10,12 @@ const ArchivedCalls = ({
   switchView,
   setSelectedActivity,
 }) => {
+  // Filter archived activities with necessary conditions
   const nonArchivedActivities = archivedActivities.filter(
     (activity) => activity.is_archived && activity.to && activity.from
   );
 
+  // Function to extract subtext based on call type, direction, and recipient
   const extractSubtext = (call_type, direction, to) => {
     if (direction === "inbound") {
       if (call_type === "missed") {
@@ -34,6 +36,7 @@ const ArchivedCalls = ({
     }
   };
 
+  // Function to extract and format time from HH:mm to 12-hour format with AM/PM
   const extractTime = (time) => {
     const [hour, minutes] = time.split(":");
     const hourUnder12 = (hour > 12 ? hour - 12 : hour) + ":" + minutes;
@@ -42,6 +45,7 @@ const ArchivedCalls = ({
     return hourUnder12 + meridiem;
   };
 
+  // Function to add suffix to day number (e.g., 1st, 2nd, 3rd)
   const addSuffix = (number) => {
     if (number % 100 >= 11 && number % 100 <= 13) {
       return number + "th";
@@ -59,6 +63,7 @@ const ArchivedCalls = ({
     }
   };
 
+  // Function to extract and format date for a specific activity
   const extractedDate = (date) => {
     const month = [
       "",
@@ -82,6 +87,7 @@ const ArchivedCalls = ({
     );
   };
 
+  // Rendering the main ArchivedCalls component
   return (
     <div className="layout">
       <h1>{"A I R C A L L"}</h1>
