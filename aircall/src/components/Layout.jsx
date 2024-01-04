@@ -4,14 +4,19 @@ import "../styles/App.css";
 import ActivityFeed from "./ActivityFeed";
 import ArchivedCalls from "./ArchivedCalls";
 
+// Main layout component
 const Layout = () => {
+  // State variables
   const [activities, setActivities] = useState([]);
   const [archivedActivities, setArchivedActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
+
+  // Fetch activities on component mount
   useEffect(() => {
     loadActivities();
   }, []);
 
+  // Load activities from the API
   const loadActivities = async () => {
     const data = await getActivities();
     const sortedActivities = data.sort(
@@ -23,11 +28,13 @@ const Layout = () => {
     );
   };
 
+  // Load details for a specific activity
   const loadActivityDetails = async (id) => {
     const data = await getActivityDetails(id);
     setSelectedActivity(data);
   };
 
+  // Archive a specific activity
   const archiveActivity = (id) => {
     const updatedActivities = activities.map((activity) =>
       activity.id === id ? { ...activity, is_archived: true } : activity
@@ -39,6 +46,7 @@ const Layout = () => {
     updateActivity(id, { is_archived: true });
   };
 
+  // Unarchive a specific activity
   const unarchiveActivity = (id) => {
     const updatedActivities = activities.map((activity) =>
       activity.id === id ? { ...activity, is_archived: false } : activity
@@ -50,6 +58,7 @@ const Layout = () => {
     updateActivity(id, { is_archived: false });
   };
 
+  // Archive all activities
   const archiveAll = async () => {
     const updatedActivities = activities.map((activity) => ({
       ...activity,
@@ -65,6 +74,7 @@ const Layout = () => {
     );
   };
 
+  // Unarchive all activities
   const unarchiveAll = async () => {
     const updatedActivities = activities.map((activity) => ({
       ...activity,
@@ -80,14 +90,17 @@ const Layout = () => {
     );
   };
 
+  // Close activity details modal
   const closeActivityDetails = () => {
     setSelectedActivity(null);
   };
 
+  // Filter activities based on certain criteria
   const filteredActivities = activities.filter(
     (activity) => !activity.is_archived && activity.to && activity.from
   );
 
+  // Group activities by creation date
   const groupedActivities = filteredActivities.reduce((acc, activity) => {
     const createdAtDate = new Date(activity.created_at).toLocaleDateString();
     if (!acc[createdAtDate]) {
@@ -97,12 +110,15 @@ const Layout = () => {
     return acc;
   }, {});
 
+  // State for controlling the current view (activityFeed or archived)
   const [currentView, setCurrentView] = useState("activityFeed");
 
+  // Switch between activityFeed and archived views
   const switchView = (view) => {
     setCurrentView(view);
   };
 
+  // Render the appropriate view based on the current state
   return (
     <>
       {currentView === "activityFeed" ? (
