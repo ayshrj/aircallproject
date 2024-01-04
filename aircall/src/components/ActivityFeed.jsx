@@ -7,6 +7,7 @@ import { faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
 import { faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
+// Array to convert numeric month to abbreviated month names
 const month = [
   "",
   "Jan",
@@ -23,6 +24,7 @@ const month = [
   "Dec",
 ];
 
+// Function to format date for subheading
 const extractedDateForSubheading = (date) => {
   return (
     month[parseInt(date.substr(3, 2))] +
@@ -33,6 +35,7 @@ const extractedDateForSubheading = (date) => {
   );
 };
 
+// Function to extract subtext based on call type, direction, and recipient
 const extractSubtext = (call_type, direction, to) => {
   if (direction === "inbound") {
     if (call_type === "missed") {
@@ -53,6 +56,7 @@ const extractSubtext = (call_type, direction, to) => {
   }
 };
 
+// Function to extract human-readable duration from seconds
 function extractDuration(seconds) {
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
@@ -80,13 +84,16 @@ const ActivityFeed = ({
   switchView,
   setSelectedActivity,
 }) => {
+  // State to manage the currently selected detail activity
   const [selectedDetailActivity, setSelectedDetailActivity] = useState(null);
 
+  // Function to display activity details
   const showActivityDetails = (activity) => {
     loadActivityDetails(activity.id);
     setSelectedDetailActivity(activity);
   };
 
+  // Function to extract and format time from HH:mm to 12-hour format with AM/PM
   const extractTime = (time) => {
     const [hour, minutes] = time.split(":");
     const hourUnder12 = (hour > 12 ? hour - 12 : hour) + ":" + minutes;
@@ -95,6 +102,7 @@ const ActivityFeed = ({
     return hourUnder12 + meridiem;
   };
 
+  // Function to add suffix to day number (e.g., 1st, 2nd, 3rd)
   const addSuffix = (number) => {
     if (number % 100 >= 11 && number % 100 <= 13) {
       return number + "th";
@@ -112,22 +120,8 @@ const ActivityFeed = ({
     }
   };
 
+  // Function to extract and format date for a specific activity
   const extractedDate = (date) => {
-    const month = [
-      "",
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
     return (
       addSuffix(parseInt(date.substr(3, 2))) +
       " " +
@@ -135,6 +129,7 @@ const ActivityFeed = ({
     );
   };
 
+  // Component for rendering detailed information about a specific activity
   const ActivityDetail = ({ selectedDetailActivity, onClose }) => {
     return (
       <>
@@ -195,6 +190,7 @@ const ActivityFeed = ({
     );
   };
 
+  // Rendering the main ActivityFeed component
   return (
     <div className="layout">
       <h1>{"A I R C A L L"}</h1>
