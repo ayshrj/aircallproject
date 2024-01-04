@@ -1,0 +1,186 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.layout {
+  text-align: center;
+  margin: 0px;
+  width: 375px;
+  height: 667px;
+}
+
+h1 {
+  color: #333;
+}
+
+.action-buttons {
+  margin-bottom: 20px;
+}
+
+button {
+  margin: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+.activity-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.activity-feed,
+.archived-calls {
+  flex: 1;
+  width: 37px;
+  padding-bottom: 26px;
+}
+
+h2 {
+  color: #555;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li-boooo {
+  background-color: #ffffff;
+  border: 0px solid #ddd;
+  padding: 10px;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+}
+
+li button {
+  margin-left: 10px;
+}
+
+.archived {
+  color: #888;
+}
+
+.activity-detail {
+  position: relative;
+  background-color: #a3a3a3;
+  border: 1px solid #ddd;
+  padding: 40px;
+  margin-top: 0px;
+  margin-left: 4px;
+  text-align: left;
+}
+
+.activity-detail button {
+  margin-top: 10px;
+}
+
+.activity-feed-date {
+  color: #555;
+}
+
+.list-box-body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.list-box {
+  display: flex;
+  align-items: left;
+  text-align: left;
+  padding: 20px;
+  margin: 5px;
+  margin-right: 0;
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: #c2c2c2;  
+  border-radius: 8px;
+}
+
+.list-box-time {
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: -5px;
+  color: #000000;
+}
+
+.list-box-content {
+  flex-grow: 1;
+}
+
+.list-box-main-number {
+  font-size: 20px;
+  color: #555555;
+  margin-bottom: 2px;
+}
+
+.list-box-information-about-caller {
+  font-size: 14px;
+  color: #888888;
+}
+
+.list-box {
+  position: relative;
+}
+
+.list-box-icons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+} 
+
+.archive-icon, .info-icon {
+  color: black;
+  margin-right: 17px;
+  transition: transform 0.3s ease-in-out;
+  font-size: 1em;
+}
+
+.archive-icon:hover, .info-icon:hover {
+  cursor: pointer;
+  transform: scale(1.50);
+}
+
+.call-type-icon{
+  font-size: 20px;
+  color: #555555;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  margin-right: 9px;
+}
+
+
+
+.activity-detail-close-button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.archivedSubtext{
+  color: #9f9d9d;
+  font-size: 12px;
+}
