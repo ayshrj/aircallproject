@@ -7,30 +7,6 @@ import { faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
 import { faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
-// Function to format date for subheading
-const extractedDateForSubheading = (date) => {
-  // Array to convert numeric month to abbreviated month names
-  const month = [
-    "",
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-
-  const parts = date.split("/");
-
-  return month[parseInt(parts[0])] + ", " + parts[1] + " " + parts[2];
-};
-
 // Function to extract subtext based on call type, direction, and recipient
 const extractSubtext = (call_type, direction, to) => {
   if (direction === "inbound") {
@@ -79,7 +55,34 @@ const ActivityFeed = ({
   loadActivityDetails,
   switchView,
   setSelectedActivity,
+  isItDDMMYYYY,
 }) => {
+  // Function to format date for subheading
+  const extractedDateForSubheading = (date) => {
+    // Array to convert numeric month to abbreviated month names
+    const month = [
+      "",
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    const parts = date.split("/");
+
+    return isItDDMMYYYY
+      ? month[parseInt(parts[1])] + ", " + parts[0] + " " + parts[2]
+      : month[parseInt(parts[0])] + ", " + parts[1] + " " + parts[2];
+  };
+
   // State to manage the currently selected detail activity
   const [selectedDetailActivity, setSelectedDetailActivity] = useState(null);
 
@@ -199,8 +202,6 @@ const ActivityFeed = ({
                           <div className="list-box-content">
                             <div className="list-box-main-number">
                               {activity.from}
-                              {/* <div>{activity.from}</div>
-                              <div>{activity.created_at}</div> */}
                             </div>
                             <div className="list-box-information-about-caller">
                               {extractSubtext(
