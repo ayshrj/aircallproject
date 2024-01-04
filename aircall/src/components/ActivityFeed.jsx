@@ -8,25 +8,24 @@ import { faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 
-// Array to convert numeric month to abbreviated month names
-const month = [
-  "",
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
 // Function to format date for subheading
 const extractedDateForSubheading = (date) => {
+  // Array to convert numeric month to abbreviated month names
+  const month = [
+    "",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
   return (
     month[parseInt(date.substr(3, 2))] +
     ", " +
@@ -175,7 +174,6 @@ const ActivityFeed = ({
             <div key={date}>
               <h3 className="activity-feed-date">
                 {extractedDateForSubheading(date)}
-                {date}
               </h3>
               <ul>
                 {groupedActivities[date].map((activity) => (
