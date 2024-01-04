@@ -81,7 +81,7 @@ const ArchivedCalls = ({
       "Dec",
     ];
     return (
-      addSuffix(parseInt(date.substr(3, 2))) +
+      addSuffix(parseInt(date.substr(3, 2)) + 1) +
       " " +
       month[parseInt(date.substr(0, 2))]
     );
