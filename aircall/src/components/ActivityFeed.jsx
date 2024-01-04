@@ -6,6 +6,7 @@ import { faVoicemail } from "@fortawesome/free-solid-svg-icons";
 import { faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
 import { faPhoneSlash } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import moment from "moment";
 
 // Array to convert numeric month to abbreviated month names
 const month = [
@@ -102,33 +103,6 @@ const ActivityFeed = ({
     return hourUnder12 + meridiem;
   };
 
-  // Function to add suffix to day number (e.g., 1st, 2nd, 3rd)
-  const addSuffix = (number) => {
-    if (number % 100 >= 11 && number % 100 <= 13) {
-      return number + "th";
-    }
-
-    switch (number % 10) {
-      case 1:
-        return number + "st";
-      case 2:
-        return number + "nd";
-      case 3:
-        return number + "rd";
-      default:
-        return number + "th";
-    }
-  };
-
-  // Function to extract and format date for a specific activity
-  const extractedDate = (date) => {
-    return (
-      addSuffix(parseInt(date.substr(3, 2))) +
-      " " +
-      month[parseInt(date.substr(0, 2))]
-    );
-  };
-
   // Component for rendering detailed information about a specific activity
   const ActivityDetail = ({ selectedDetailActivity, onClose }) => {
     return (
@@ -179,12 +153,6 @@ const ActivityFeed = ({
           <div>
             <strong>Via:</strong> {selectedDetailActivity.via}
           </div>
-          <div>
-            {"at "}
-            {extractTime(selectedDetailActivity.created_at.substr(11, 5))}
-            {" on "}
-            {extractedDate(selectedDetailActivity.created_at.substr(5, 5))}
-          </div>
         </div>
       </>
     );
@@ -207,6 +175,7 @@ const ActivityFeed = ({
             <div key={date}>
               <h3 className="activity-feed-date">
                 {extractedDateForSubheading(date)}
+                {date}
               </h3>
               <ul>
                 {groupedActivities[date].map((activity) => (
