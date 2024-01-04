@@ -117,39 +117,6 @@ const Layout = () => {
   const switchView = (view) => {
     setCurrentView(view);
   };
-  // return (
-  //   <>
-  //     {Object.entries(groupedActivities).map(([date, activities]) => (
-  //       <div key={date}>
-  //         <h2>{date}</h2>
-  //         <ul>
-  //           {activities.map((activity) => (
-  //             <li key={activity.id}>
-  //               {activity.title} - {activity.description}
-  //               {/* Include other details as needed */}
-  //             </li>
-  //           ))}
-  //         </ul>
-  //       </div>
-  //     ))}
-  //   </>
-  // );
-  // Render the appropriate view based on the current state
-
-  // const isItDDMMYYYY = () => {
-  //   Object.entries(groupedActivities).forEach(([date]) => {
-  //     console.log(date);
-  //     const parts = date.split("/");
-  //     if (parseInt(parts[0]) > 12) {
-  //       return true;
-  //     }
-  //     if (parseInt(parts[1]) > 12) {
-  //       return false;
-  //     }
-  //   });
-
-  //   return true;
-  // };
 
   const checkWhetherDDMMYYYY = () => {
     let isIt;
