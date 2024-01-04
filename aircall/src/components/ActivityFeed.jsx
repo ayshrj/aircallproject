@@ -25,13 +25,10 @@ const extractedDateForSubheading = (date) => {
     "Nov",
     "Dec",
   ];
-  return (
-    month[parseInt(date.substr(3, 2))] +
-    ", " +
-    date.substr(0, 2) +
-    " " +
-    date.substr(6, 4)
-  );
+
+  const parts = date.split("/");
+
+  return month[parseInt(parts[1])] + ", " + parts[0] + " " + parts[2];
 };
 
 // Function to extract subtext based on call type, direction, and recipient
@@ -173,8 +170,6 @@ const ActivityFeed = ({
             <div key={date}>
               <h3 className="activity-feed-date">
                 {extractedDateForSubheading(date)}
-                {"||||"}
-                {date}
               </h3>
               <ul>
                 {groupedActivities[date].map((activity) => (
@@ -204,8 +199,6 @@ const ActivityFeed = ({
                           <div className="list-box-content">
                             <div className="list-box-main-number">
                               {activity.from}
-                              {"||||"}
-                              {activity.created_at}
                               {/* <div>{activity.from}</div>
                               <div>{activity.created_at}</div> */}
                             </div>
