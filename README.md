@@ -62,7 +62,6 @@ API Base URL: `https://charming-bat-singlet.cyclic.app/https://cerulean-marlin-w
 ## React Best Practices
 
 - The code follows best practices for structuring React components and managing state.
-- Redux or Context API is used for state management, providing a scalable and maintainable architecture.
 
 ## Code Readability and Maintainability
 
